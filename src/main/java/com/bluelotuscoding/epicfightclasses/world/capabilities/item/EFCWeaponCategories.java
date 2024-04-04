@@ -3,7 +3,7 @@ package com.bluelotuscoding.epicfightclasses.world.capabilities.item;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 public enum EFCWeaponCategories implements WeaponCategory {
-    OATH_TAKER;
+    OATHTAKER;
 
     final int id;
 

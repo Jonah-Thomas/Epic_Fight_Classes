@@ -4,8 +4,10 @@ import com.bluelotuscoding.epicfightclasses.gameasset.EFCAnimations;
 import com.bluelotuscoding.epicfightclasses.gameasset.EFCColliders;
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.LivingMotions;
+import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
@@ -18,19 +20,19 @@ import java.util.function.Function;
 public class EFCWeaponCapabilityPresets {
     public static final Function<Item, CapabilityItem.Builder> OATH_TAKER = (item) -> {
         CapabilityItem.Builder builder = WeaponCapability.builder()
-                .category(CapabilityItem.WeaponCategories.SPEAR)
+                .category(EFCWeaponCategories.OATHTAKER)
                 .styleProvider((playerpatch) -> CapabilityItem.Styles.ONE_HAND)
                 .collider(EFCColliders.OATH_TAKER)
-                .hitSound(EpicFightSounds.BLUNT_HIT.get())
+                .hitSound(EpicFightSounds.BLUNT_HIT)
                 .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                 .canBePlacedOffhand(false)
-                .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.oath_taker_basic_magic_attack_01)
+                .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.OATH_TAKER_BASIC_ATTACK_01)
 
                 //.innateSkill(CapabilityItem.Styles.ONE_HAND,(itemstack) -> EFCSkills.CHARYBDIS)
                 .comboCancel((style) -> {
                     return false;
                 })
-                .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, Animations.BIPED_FLOAT)
+                .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, Animations.BIPED_IDLE)
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_HOLD_SPEAR)
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.CHASE, Animations.VINDICATOR_CHASE)
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
@@ -38,4 +40,10 @@ public class EFCWeaponCapabilityPresets {
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
         return builder;
     };
+
+
+    @SubscribeEvent
+    public static void register(WeaponCapabilityPresetRegistryEvent event) {
+        event.getTypeEntry().put("oath_taker", OATH_TAKER);
+    }
 }

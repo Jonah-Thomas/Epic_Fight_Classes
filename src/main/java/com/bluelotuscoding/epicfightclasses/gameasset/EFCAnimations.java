@@ -22,7 +22,7 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 
 @Mod.EventBusSubscriber(modid = EpicFightClassesMain.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EFCAnimations {
-    public static StaticAnimation oath_taker_basic_magic_attack_01;
+    public static StaticAnimation OATH_TAKER_BASIC_ATTACK_01;
 
 
     @SubscribeEvent
@@ -32,8 +32,9 @@ public class EFCAnimations {
 
     private static void build() {
         HumanoidArmature biped = Armatures.BIPED;
-        oath_taker_basic_magic_attack_01 = new BasicMultipleAttackAnimation(0.15F, "biped/combat/oath_taker_basic_magic_attack_01", biped,
+        OATH_TAKER_BASIC_ATTACK_01 = new BasicMultipleAttackAnimation(0.15F, "biped/combat/oath_taker_basic_attack_01", biped,
                 new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER)).addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F);
+    // .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true);
     }
     /*
 

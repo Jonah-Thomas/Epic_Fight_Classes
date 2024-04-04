@@ -1,6 +1,8 @@
 package com.bluelotuscoding.epicfightclasses.main;
 
 import com.bluelotuscoding.epicfightclasses.gameasset.EFCAnimations;
+import com.bluelotuscoding.epicfightclasses.world.entity.block.ModBlockEntities;
+import com.bluelotuscoding.epicfightclasses.world.entity.spells.SpellEntityTypes;
 import com.bluelotuscoding.epicfightclasses.world.item.EFCItems;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,8 +35,10 @@ public class EpicFightClassesMain
         eventBus.addListener(this::doCommonStuff);
         eventBus.addListener(EFCAnimations::registerAnimations);
 
-        EFCItems.ITEMS.register(eventBus);
-
+        //These are the registered classes that our mod will be using.
+        EFCItems.ITEMS.register(eventBus); // ctrl + click EFCItems to see how I registered the classes.
+        ModBlockEntities.register(eventBus);
+        SpellEntityTypes.SPELL_ENTITIES.register(eventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
