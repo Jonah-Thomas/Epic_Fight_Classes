@@ -15,6 +15,7 @@ public class EFCItems {
 
 public static final RegistryObject<Item> OATH_TAKER = ITEMS.register("oath_taker",
         () -> new OathTakerItem(new Item.Properties().tab(EFCCreativeTabs.ITEMS).rarity(Rarity.RARE)));
-
+public static final RegistryObject<Item> AMON = ITEMS.register("amon",
+            () -> new AmonItem(new Item.Properties().tab(EFCCreativeTabs.ITEMS).rarity(Rarity.RARE)));
 
 }
