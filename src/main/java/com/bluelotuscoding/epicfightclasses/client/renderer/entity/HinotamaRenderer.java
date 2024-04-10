@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-public class HinotamaRenderer extends GeoEntityRenderer<HinotamaSpellEntity> {
+public class HinotamaRenderer extends  GeoEntityRenderer<HinotamaSpellEntity> {
     public HinotamaRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new HinotamaModel());
       //  this.shadowRadius = 0.3F;
