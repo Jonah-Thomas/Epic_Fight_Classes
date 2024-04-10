@@ -22,20 +22,40 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class HinotamaSpellEntity extends PathfinderMob implements IAnimatable {
+public class HinotamaSpellEntity extends Entity implements IAnimatable {
 
     protected static final AnimationBuilder SPELL_CIRCLE_ANIMATION = new AnimationBuilder().addAnimation("hinotama.animation", true);
     private AnimationFactory factory = new GeckoLibUtil().createFactory(this);
-    public HinotamaSpellEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
+    public HinotamaSpellEntity(EntityType<? extends Entity> entityType, Level level) {
         super(entityType, level);
     }
 
+    @Override
+    protected void defineSynchedData() {
+
+    }
+
+    @Override
+    protected void readAdditionalSaveData(CompoundTag pCompound) {
+
+    }
+
+    @Override
+    protected void addAdditionalSaveData(CompoundTag pCompound) {
+
+    }
+
+    @Override
+    public Packet<?> getAddEntityPacket() {
+        return null;
+    }
+
     //Here we set the attributes of the entity make sure to create a new Event in the EventBussEvent class that has entityAttributeEvent
-    public static AttributeSupplier setAttributes() {
+   /* public static AttributeSupplier setAttributes() {
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.ARMOR_TOUGHNESS, 20000.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 100.0D).build();
-    }
+    }*/
 
     // Controls The entity Animations
     @Override
