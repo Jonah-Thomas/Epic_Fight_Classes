@@ -1,7 +1,7 @@
 package com.bluelotuscoding.epicfightclasses.client.renderer.entity;
 
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
-import com.bluelotuscoding.epicfightclasses.world.entity.spells.firespells.HinotamaSpellEntity;
+import com.bluelotuscoding.epicfightclasses.world.entity.server.effects.spells.firespells.HinotamaSpellEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 

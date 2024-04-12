@@ -1,7 +1,7 @@
 package com.bluelotuscoding.epicfightclasses.world.entity;
 
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
-import com.bluelotuscoding.epicfightclasses.world.entity.spells.firespells.HinotamaSpellEntity;
+import com.bluelotuscoding.epicfightclasses.world.entity.server.effects.spells.firespells.HinotamaSpellEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
