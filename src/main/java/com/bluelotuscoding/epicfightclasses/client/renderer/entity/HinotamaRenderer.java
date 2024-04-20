@@ -1,27 +1,22 @@
 package com.bluelotuscoding.epicfightclasses.client.renderer.entity;
 
+import com.bluelotuscoding.epicfightclasses.client.renderer.RenderSpellBase;
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
 import com.bluelotuscoding.epicfightclasses.world.entity.server.effects.spells.firespells.HinotamaSpellEntity;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-public class HinotamaRenderer extends  GeoEntityRenderer<HinotamaSpellEntity> {
+public class HinotamaRenderer extends RenderSpellBase<HinotamaSpellEntity> {
+    public  static final ResourceLocation FIRE_SPELL = new ResourceLocation(EpicFightClassesMain.MOD_ID, "textures/entity/spells/hinotama.png");
     public HinotamaRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new HinotamaModel());
       //  this.shadowRadius = 0.3F;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(HinotamaSpellEntity instance) {
-        return new ResourceLocation(EpicFightClassesMain.MOD_ID, "textures/entity/spells/hinotama.png");
+    public ResourceLocation getTextureLocation(HinotamaSpellEntity entity) {
+        return FIRE_SPELL;
     }
 
-   /* @Override
-    public RenderType getRenderType(HinotamaSpellEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
-        stack.scale(10.0F, 10.0F, 10.0F);
-        return super .getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
-    }*/
 }

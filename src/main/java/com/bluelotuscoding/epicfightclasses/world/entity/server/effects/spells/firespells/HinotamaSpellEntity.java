@@ -1,5 +1,7 @@
 package com.bluelotuscoding.epicfightclasses.world.entity.server.effects.spells.firespells;
 
+import com.bluelotuscoding.epicfightclasses.world.entity.server.effects.SpellnSkillEffect;
+import com.bluelotuscoding.epicfightclasses.world.entity.server.effects.spells.SpellEntityBase;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -22,11 +24,11 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 import java.util.Optional;
 import java.util.UUID;
 
-public class HinotamaSpellEntity extends Entity implements IAnimatable {
+public class HinotamaSpellEntity extends SpellEntityBase {
     private static final EntityDataAccessor<Optional<UUID>> SPELL = SynchedEntityData.defineId(HinotamaSpellEntity.class, EntityDataSerializers.OPTIONAL_UUID);
     protected static final AnimationBuilder SPELL_CIRCLE_ANIMATION = new AnimationBuilder().addAnimation("hinotama.animation", true);
     private AnimationFactory factory = new GeckoLibUtil().createFactory(this);
-    public HinotamaSpellEntity(EntityType<? extends Entity> entityType, Level level) {
+    public HinotamaSpellEntity(EntityType<? extends HinotamaSpellEntity> entityType, Level level) {
         super(entityType, level);
     }
 
@@ -50,12 +52,7 @@ public class HinotamaSpellEntity extends Entity implements IAnimatable {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
-    //Here we set the attributes of the entity make sure to create a new Event in the EventBussEvent class that has entityAttributeEvent
-   /* public static AttributeSupplier setAttributes() {
-        return PathfinderMob.createMobAttributes()
-                .add(Attributes.ARMOR_TOUGHNESS, 20000.0D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 100.0D).build();
-    }*/
+
 
     // Controls The entity Animations
     @Override
@@ -69,24 +66,12 @@ public class HinotamaSpellEntity extends Entity implements IAnimatable {
     }
     @Override
     public AnimationFactory getFactory() {
-
         return this.factory;
     }
 
-
-    /* @Override
-    protected void defineSynchedData() {
-
-    }
     @Override
-    public Packet<?> getAddEntityPacket() {
-        return null;
-    }*/
-
-   /* @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return null;
+    public int tickTimer() {
+        return tickCount;
     }
 
 
