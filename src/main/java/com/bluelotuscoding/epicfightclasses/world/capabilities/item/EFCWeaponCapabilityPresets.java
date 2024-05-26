@@ -26,13 +26,13 @@ public class EFCWeaponCapabilityPresets {
                 .hitSound(EpicFightSounds.BLUNT_HIT)
                 .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                 .canBePlacedOffhand(false)
-                .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.OATH_TAKER_BASIC_ATTACK_01)
+                .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.OATH_TAKER_BASIC_ATTACK_01, EFCAnimations.OATH_TAKER_BASIC_ATTACK_02, EFCAnimations.OATH_TAKER_BASIC_ATTACK_03)
 
-                //.innateSkill(CapabilityItem.Styles.ONE_HAND,(itemstack) -> EFCSkills.CHARYBDIS)
+                //.innateSkill(CapabilityItem.Styles.ONE_HAND,(itemstack) -> EFCSkills.FIREBALL_BURST)
                 .comboCancel((style) -> {
                     return false;
                 })
-                .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, Animations.BIPED_IDLE)
+                .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, EFCAnimations.MAGE_IDLE)
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_HOLD_SPEAR)
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.CHASE, Animations.VINDICATOR_CHASE)
                 .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
