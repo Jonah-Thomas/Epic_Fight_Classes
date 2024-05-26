@@ -27,20 +27,20 @@ public class EFCAnimations {
     private static void build() {
         HumanoidArmature biped = Armatures.BIPED;
         // IDLEs
-        MAGE_IDLE = new StaticAnimation(0.1F, true, "biped/living/mage_idle", biped);
+        MAGE_IDLE = new StaticAnimation (true, "biped/living/mage_idle", biped);
 
         // Basic Attacks
         OATH_TAKER_BASIC_ATTACK_01 = new BasicMultipleAttackAnimation(0.15F, "biped/combat/oath_taker_basic_attack_01", biped,
-                new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER)).addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
-                .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true);
+                new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER))
+                .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F);
 
         OATH_TAKER_BASIC_ATTACK_02 = new BasicMultipleAttackAnimation(0.15F, "biped/combat/oath_taker_basic_attack_02", biped,
-                new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER)).addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
-                .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true);
+                new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER))
+                .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F);
 
         OATH_TAKER_BASIC_ATTACK_03 = new BasicMultipleAttackAnimation(0.15F, "biped/combat/oath_taker_basic_attack_03", biped,
-                new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER)).addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
-                .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true);
+                new AttackAnimation.Phase(0.0F, 0.15F, 0.19F, 0.2F, 0.2F, biped.toolR, EFCColliders.OATH_TAKER))
+                .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F);
     }
 
 
