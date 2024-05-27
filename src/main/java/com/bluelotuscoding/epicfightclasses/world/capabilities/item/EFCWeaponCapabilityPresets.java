@@ -26,7 +26,7 @@ public class EFCWeaponCapabilityPresets {
                 .hitSound(EpicFightSounds.BLUNT_HIT)
                 .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                 .canBePlacedOffhand(false)
-                .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.OATH_TAKER_BASIC_ATTACK_01, EFCAnimations.OATH_TAKER_BASIC_ATTACK_02, EFCAnimations.OATH_TAKER_BASIC_ATTACK_03)
+                .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.OATH_TAKER_BASIC_ATTACK_01, EFCAnimations.OATH_TAKER_BASIC_ATTACK_02, EFCAnimations.OATH_TAKER_BASIC_ATTACK_03, Animations.SWORD_DASH, Animations.SWORD_AIR_SLASH)
 
                 //.innateSkill(CapabilityItem.Styles.ONE_HAND,(itemstack) -> EFCSkills.FIREBALL_BURST)
                 .comboCancel((style) -> {
