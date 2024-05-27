@@ -2,6 +2,7 @@ package com.bluelotuscoding.epicfightclasses.world.capabilities.item;
 
 import com.bluelotuscoding.epicfightclasses.gameasset.EFCAnimations;
 import com.bluelotuscoding.epicfightclasses.gameasset.EFCColliders;
+import com.bluelotuscoding.epicfightclasses.gameasset.EFCSkills;
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,8 +28,7 @@ public class EFCWeaponCapabilityPresets {
                 .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                 .canBePlacedOffhand(false)
                 .newStyleCombo(CapabilityItem.Styles.ONE_HAND, EFCAnimations.OATH_TAKER_BASIC_ATTACK_01, EFCAnimations.OATH_TAKER_BASIC_ATTACK_02, EFCAnimations.OATH_TAKER_BASIC_ATTACK_03, Animations.SWORD_DASH, Animations.SWORD_AIR_SLASH)
-
-                //.innateSkill(CapabilityItem.Styles.ONE_HAND,(itemstack) -> EFCSkills.FIREBALL_BURST)
+                .innateSkill(CapabilityItem.Styles.ONE_HAND,(itemstack) -> EFCSkills.HINOTAMA_BURST)
                 .comboCancel((style) -> {
                     return false;
                 })

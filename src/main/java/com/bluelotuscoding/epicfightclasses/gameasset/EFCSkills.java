@@ -1,11 +1,8 @@
 package com.bluelotuscoding.epicfightclasses.gameasset;
 
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
-//import com.bluelotuscoding.epicfightclasses.skill.Aura_Barrier;
-//import com.bluelotuscoding.epicfightclasses.skill.Barrier;
-//import com.bluelotuscoding.epicfightclasses.skill.passive.Ego_Weapon;
-//import com.bluelotuscoding.epicfightclasses.skill.spells.fire.HinotamaSpell;
-//import com.bluelotuscoding.epicfightclasses.world.item.EFCCreativeTabs;
+import com.bluelotuscoding.epicfightclasses.skill.spells.fire.HinotamaBurstSpell;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.property.AnimationProperty;
@@ -13,8 +10,12 @@ import yesman.epicfight.api.data.reloader.SkillManager;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.skill.Skill;
-//import yesman.epicfight.skill.passive.PassiveSkill;
+import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
+import yesman.epicfight.world.damagesource.ExtraDamageInstance;
+import yesman.epicfight.world.damagesource.SourceTags;
+import yesman.epicfight.world.damagesource.StunType;
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = EpicFightClassesMain.MOD_ID , bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EFCSkills {
@@ -26,7 +27,7 @@ public class EFCSkills {
 
     // Weapon Skill ----------------------------------Caused by: java.lang.NullPointerException: Cannot invoke "yesman.epicfight.skill.weaponinnate.WeaponInnateSkill.newProperty()" because "hinotamaSpell" is null----------------------
     // public static Skill ;
-      // public static Skill HINOTAMA;
+        public static Skill HINOTAMA_BURST;
 
 
     // Weapon Passive --------------------------------------------------------
@@ -61,10 +62,8 @@ public class EFCSkills {
 
 
         // WEAPON SKILL --------------------------------------------------------
-
-        // BLOSSOM = event.registerSkill(new BlossomSkill(BlossomSkill.createBuilder(new ResourceLocation(EpicFightMod.MODID, "blossom")).setConsumption(60.0F)),false);
-        /*SkillManager.register(CharybdisSkill::new, WeaponInnateSkill.createWeaponInnateBuilder(),
-             WeaponsOfMinecraft.MODID,"charybdis");*/
+        //SkillManager.register(HinotamaBurstSpell::new, WeaponInnateSkill.createWeaponInnateBuilder(), "EpicFightClasses", "hinotama_burst");
+        SkillManager.register(HinotamaBurstSpell::new, WeaponInnateSkill.createWeaponInnateBuilder(), "epicfightclasses", "hinotama_burst");
 
        // SkillManager.register(HinotamaSpell::new, WeaponInnateSkill.createWeaponInnateBuilder(),
           //      EpicFightClassesMain.MOD_ID,"hinotama");
@@ -83,9 +82,9 @@ public class EFCSkills {
         //  PASSIVE --------------------------------------------------------
 
         SkillManager.register(Ego_Weapon::new, PassiveSkill.createPassiveBuilder().setCreativeTab(EFCCreativeTabs.ITEMS),
-                EpicFightClassesMain.MOD_ID,"ego_weapon");
+                EpicFightClassesMain.MOD_ID,"ego_weapon");*/
 
-         */
+
     }
 
     @SubscribeEvent
@@ -99,28 +98,14 @@ public class EFCSkills {
 
 
         //Weapon Innate Skills --------------------------------------------------------
-     //   WeaponInnateSkill hinotamaSpell = onBuild.build(EpicFightClassesMain.MOD_ID, "hinotama");
-     //   hinotamaSpell.newProperty()
-        //        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.50f));
-     //   HINOTAMA = hinotamaSpell;
-
-
-        /* WeaponInnateSkill charybdisSkill = onBuild.build(WeaponsOfMinecraft.MODID, "charybdis");
-        charybdisSkill.newProperty()
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.35f));
-        CHARYBDIS = charybdisSkill; */ //used as an example to look back on.
-
-        /* WeaponInnateSkill trueBerserkSkill = onBuild.build(WeaponsOfMinecraft.MODID, "true_berserk");
-        trueBerserkSkill.newProperty()
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2f))
-                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(8))
-                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
-                .newProperty()
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2f))
-                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(10))
-                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()));
-        TRUE_BERSERK = trueBerserkSkill; */ //used as an example to look back on.
-
+        WeaponInnateSkill hinotamaBurst = (WeaponInnateSkill)onBuild.build("epicfightclasses", "hinotama_burst");
+        hinotamaBurst.newProperty()
+                .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(3))
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.0F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG);
+        HINOTAMA_BURST = hinotamaBurst;
 
     }
 }

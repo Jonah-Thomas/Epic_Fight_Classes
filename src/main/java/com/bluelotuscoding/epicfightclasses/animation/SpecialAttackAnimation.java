@@ -48,7 +48,7 @@ import yesman.epicfight.world.entity.eventlistener.DealtDamageEvent;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
 import yesman.epicfight.world.gamerule.EpicFightGamerules;
 
-public class SpecialAttackAnimation extends AttackAnimation {
+public class SpecialAttackAnimation extends BasicMultipleAttackAnimation {
     public SpecialAttackAnimation(float convertTime, float antic, float contact, float recovery, @Nullable Collider collider, Joint colliderJoint, String path, Armature armature) {
         this(convertTime, antic, antic, contact, recovery, collider, colliderJoint, path, armature);
     }
