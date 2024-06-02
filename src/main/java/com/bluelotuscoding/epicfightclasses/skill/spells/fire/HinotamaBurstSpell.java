@@ -2,39 +2,11 @@ package com.bluelotuscoding.epicfightclasses.skill.spells.fire;
 
 
 import com.bluelotuscoding.epicfightclasses.gameasset.EFCAnimations;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import yesman.epicfight.api.animation.property.AnimationProperty;
-import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.gameasset.Animations;
-import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillContainer;
-import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
-import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
-import yesman.epicfight.world.capabilities.item.CapabilityItem;
-import yesman.epicfight.world.damagesource.SourceTags;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 
@@ -45,6 +17,23 @@ public class HinotamaBurstSpell extends WeaponInnateSkill {
             WeaponInnateSkill.Builder builder){
         super(builder);
     }
+
+    public void onInitiate(SkillContainer container) {
+        if (!container.getExecuter().isLogicalClient()) {
+            this.setConsumption(container, 6.0F);
+            this.setConsumptionSynchronize((ServerPlayerPatch)container.getExecuter(), 6.0F);
+        }
+
+        container.setResource(6.0F);
+    }
+
+    public void executeOnServer(ServerPlayerPatch playerPatch, FriendlyByteBuf args) {
+
+            playerPatch.playAnimationSynchronized(EFCAnimations.HINOTAMA_BURST, 0.0F);
+            super.executeOnServer(playerPatch, args);
+        }
+
+
 
     @Override
     public void onRemoved(SkillContainer container) {

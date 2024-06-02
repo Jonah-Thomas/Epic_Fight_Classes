@@ -2,7 +2,6 @@ package com.bluelotuscoding.epicfightclasses.gameasset;
 
 import com.bluelotuscoding.epicfightclasses.main.EpicFightClassesMain;
 import com.bluelotuscoding.epicfightclasses.skill.spells.fire.HinotamaBurstSpell;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.property.AnimationProperty;
@@ -10,12 +9,9 @@ import yesman.epicfight.api.data.reloader.SkillManager;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.skill.Skill;
-import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
-import yesman.epicfight.world.damagesource.ExtraDamageInstance;
-import yesman.epicfight.world.damagesource.SourceTags;
-import yesman.epicfight.world.damagesource.StunType;
-import java.util.Set;
+import yesman.epicfight.world.damagesource.*;
+
 
 @Mod.EventBusSubscriber(modid = EpicFightClassesMain.MOD_ID , bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EFCSkills {
@@ -28,6 +24,7 @@ public class EFCSkills {
     // Weapon Skill ----------------------------------Caused by: java.lang.NullPointerException: Cannot invoke "yesman.epicfight.skill.weaponinnate.WeaponInnateSkill.newProperty()" because "hinotamaSpell" is null----------------------
     // public static Skill ;
         public static Skill HINOTAMA_BURST;
+        public static Skill STAND_BASIC_COMBO_ATTACK;
 
 
     // Weapon Passive --------------------------------------------------------
@@ -104,7 +101,8 @@ public class EFCSkills {
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.0F))
-                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG);
+                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                .registerPropertiesToAnimation();
         HINOTAMA_BURST = hinotamaBurst;
 
     }
